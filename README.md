@@ -1,1 +1,1 @@
-![Metrics](https://github.com/elfensky/elfensky/blob/master/github-metrics.svg)
+![Metrics](/github-metrics.svg)
