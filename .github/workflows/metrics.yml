@@ -5,11 +5,26 @@ on:
   # (optional) Run workflow manually
   workflow_dispatch:
   # (optional) Run workflow when pushing on master/main
-  push: {branches: ["master", "main"]}
+  push: {branches: ["main"]} # remove "master" from array
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
+    if: "github.repository == 'elfensky/elfensky'" #this isn't really neccesary, but needs testing.
     steps:
-      - uses: elfensky/metrics@latest
+      - name: Github Metrics
+        if: ${{ success() || failure() }}
+        uses: elfensky/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
+          filename: github-metrics.svg
+          config_timezone: Europe/Brussels
+          base: base_indepth, header, activity, community, repositories, metadata
+          plugin_isocalendar: yes
+          plugin_languages: yes
+          plugin_habits: yes
+          plugin_habits_facts: yes
+          plugin_habits_charts: yes
+          repositories_forks: yes
+          plugin_followup: yes
+          plugin_gists: yes
+          plugin_lines: yes
