@@ -21,10 +21,24 @@ jobs:
           base: base_indepth, header, activity, community, repositories, metadata
           plugin_isocalendar: no
           plugin_languages: yes
-          plugin_habits: yes
-          plugin_habits_facts: yes
-          plugin_habits_charts: no
           repositories_forks: no
           plugin_followup: no
           plugin_gists: no
           plugin_lines: no
+          # habits
+          plugin_habits: yes
+          plugin_habits_facts: yes
+          plugin_habits_charts: yes
+          # pagespeed
+          plugin_pagespeed: yes
+          plugin_pagespeed_detailed: yes
+          plugin_pagespeed_screenshot: yes
+          plugin_pagespeed_pwa: no
+          plugin_pagespeed_token: ${{ secrets.PAGESPEED_TOKEN }}
+          plugin_pagespeed_url: https://lavrenov.io
+          # steam
+          # plugin_steam: yes
+          # plugin_steam_sections: player, most-played. recently-played
+          # plugin_steam_user: 76561198053036362
+          
+          
