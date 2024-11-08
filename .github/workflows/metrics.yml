@@ -16,29 +16,60 @@ jobs:
         uses: elfensky/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          filename: github-metrics.svg
+          filename: metrics.base.svg
           config_timezone: Europe/Brussels
           base: base_indepth, header, activity, community, repositories, metadata
           plugin_isocalendar: no
-          plugin_languages: yes
           repositories_forks: no
           plugin_followup: no
           plugin_gists: no
           plugin_lines: no
-          # habits
+      - name: github
+        if: ${{ success() || failure() }}
+        uses: elfensky/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.github.svg
+          config_timezone: Europe/Brussels
+          base: ""
+          plugin_languages: yes
+      - name: habits
+        if: ${{ success() || failure() }}
+        uses: elfensky/metrics@latest
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.habits.svg
+          config_timezone: Europe/Brussels
+          base: ""
           plugin_habits: yes
           plugin_habits_facts: yes
           plugin_habits_charts: yes
-          # pagespeed
+          plugin_habits_from: 512
+          plugin_habits_charts_type: graph
+          plugin_habits_trim: no
+      - name: pagespeed
+        if: ${{ success() || failure() }}
+        uses: elfensky/metrics@latest
+        with:
+          token: NOT_NEEDED
+          filename: metrics.plugin.pagespeed.svg
+          base: ""
           plugin_pagespeed: yes
           plugin_pagespeed_detailed: yes
           plugin_pagespeed_screenshot: yes
           plugin_pagespeed_pwa: no
           plugin_pagespeed_token: ${{ secrets.PAGESPEED_TOKEN }}
           plugin_pagespeed_url: https://lavrenov.io
-          # steam
-          # plugin_steam: yes
-          # plugin_steam_sections: player, most-played. recently-played
-          # plugin_steam_user: 76561198053036362
+      # - name: steam
+      #   if: ${{ success() || failure() }}
+      #   uses: elfensky/metrics@latest
+      #   with:
+      #     token: NOT_NEEDED
+      #     filename: metrics.plugin.steam.svg
+      #     base: ""
+      #     plugin_steam: yes
+      #     plugin_steam_sections: player, most-played. recently-played
+      #     plugin_steam_user: 76561198053036362
+          
           
           
