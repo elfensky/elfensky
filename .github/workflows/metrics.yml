@@ -1,16 +1,13 @@
-name: Metrics
+name: Generate Metrics
 on:
-  # Schedule daily updates
-  schedule: [{ cron: '0 0 * * *' }]
-  # (optional) Run workflow manually
-  workflow_dispatch:
-  # (optional) Run workflow when pushing on master/main
-  # push: { branches: ['main'] } # remove "master" from array
+  schedule: [{ cron: '0 0 * * *' }] # Schedule daily updates
+  workflow_dispatch: # Run workflow manually
+  # push: { branches: ['main'] } # Run workflow when pushing on master/main
   push:
     paths:
-      - '.github/workflows/metrics.yml'
+      - '.github/workflows/metrics.yml' # run workflow if metrics.yml changes
 jobs:
-  github-metrics:
+  generate-metrics:
     runs-on: ubuntu-latest
     if: "github.repository == 'elfensky/elfensky'" #this isn't really neccesary, but needs testing.
     steps:
@@ -112,19 +109,19 @@ jobs:
       #     plugin_calendar_limit: 0
 
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/wakatime
-      # - name: "metrics: wakapi"
-      #   if: ${{ success() || failure() }}
-      #   uses: lowlighter/metrics@latest
-      #   with:
-      #     filename: metrics.plugin.wakatime.svg
-      #     token: NOT_NEEDED
-      #     base: ""
-      #     base_skip: yes
-      #     plugin_wakatime: yes
-      #     plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }}
-      #     plugin_wakatime_url: https://wakapi.lavrenov.io
-      #     plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
-      #     plugin_wakatime_days: 365
+      - name: 'metrics: wakapi'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.wakatime.svg
+          token: NOT_NEEDED
+          base: ''
+          base_skip: yes
+          plugin_wakatime: yes
+          plugin_wakatime_token: ${{ secrets.WAKAPI_TOKEN }}
+          plugin_wakatime_url: https://wakapi.lavrenov.io
+          plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
+          plugin_wakatime_days: 365
 
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/steam
       # - name: "metrics: steam"

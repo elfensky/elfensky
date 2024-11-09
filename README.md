@@ -9,6 +9,6 @@
 
 <br>
 
-![Metrics - Achievements](/metrics.plugin.achievements.full.svg)
+![Metrics](/metrics.plugin.achievements.full.svg)
 
 <!-- ![Metrics](/metrics.plugin.achievements.compact.svg) -->
