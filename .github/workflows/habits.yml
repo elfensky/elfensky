@@ -6,24 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     if: "github.repository == 'elfensky/elfensky'" #this isn't really neccesary, but needs testing.
     steps:
-      # https://github.com/lowlighter/metrics/blob/master/source/plugins/base/README.md
-      - name: 'metrics: base'
-        if: ${{ success() || failure() }}
-        uses: lowlighter/metrics@latest
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          filename: metrics.plugin.base.svg
-          config_timezone: Europe/Brussels
-          base: header, activity, community, repositories, metadata
-          base_indepth: yes
-
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/habits
       - name: 'metrics: habits (facts)'
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          filename: metrics.plugin.habits.facts.svg
+          filename: metrics.plugin.habits.facts.trim.svg
           config_timezone: Europe/Brussels
           base: ''
           plugin_habits: yes
@@ -31,7 +20,7 @@ jobs:
           plugin_habits_charts: no
           plugin_habits_from: 512
           plugin_habits_charts_type: classic
-          # plugin_habits_trim: no
+          plugin_habits_trim: yes
 
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/habits
       - name: 'metrics: habits (charts)'
@@ -39,7 +28,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          filename: metrics.plugin.habits.charts.svg
+          filename: metrics.plugin.habits.charts.trim.svg
           config_timezone: Europe/Brussels
           base: ''
           plugin_habits: yes
@@ -47,4 +36,4 @@ jobs:
           plugin_habits_charts: yes
           plugin_habits_from: 512
           plugin_habits_charts_type: classic
-          # plugin_habits_trim: no
+          plugin_habits_trim: yes
