@@ -1,4 +1,4 @@
-name: Generate Pagespeed
+name: Automate Pagespeed
 on:
   schedule:
     - cron: '0 0 * * *' # Every Day at 00:00 AM UTC

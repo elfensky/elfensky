@@ -1,4 +1,4 @@
-name: Generate All Metrics
+name: Automate Metrics
 on:
   schedule: # [{ cron: '0 0 * * 1' }] # Schedule daily updates
     - cron: '0 0 * * 1' # Every Monday at 00:00 AM UTC
