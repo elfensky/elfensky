@@ -11,7 +11,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          filename: metrics.plugin.habits.facts.trim.svg
+          filename: metrics.plugin.habits.facts.svg
           config_timezone: Europe/Brussels
           base: ''
           plugin_habits: yes
@@ -19,7 +19,7 @@ jobs:
           plugin_habits_charts: no
           plugin_habits_from: 512
           plugin_habits_charts_type: classic
-          plugin_habits_trim: yes
+          plugin_habits_trim: no
 
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/habits
       - name: 'metrics: habits (charts)'
@@ -27,7 +27,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          filename: metrics.plugin.habits.charts.trim.svg
+          filename: metrics.plugin.habits.charts.svg
           config_timezone: Europe/Brussels
           base: ''
           plugin_habits: yes
@@ -35,7 +35,7 @@ jobs:
           plugin_habits_charts: yes
           plugin_habits_from: 512
           plugin_habits_charts_type: classic
-          plugin_habits_trim: yes
+          plugin_habits_trim: no
 
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/habits
       - name: 'metrics: habits'
@@ -43,7 +43,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          filename: metrics.plugin.habits.trim.svg
+          filename: metrics.plugin.habits.svg
           config_timezone: Europe/Brussels
           base: ''
           plugin_habits: yes
@@ -51,4 +51,4 @@ jobs:
           plugin_habits_charts: yes
           plugin_habits_from: 512
           plugin_habits_charts_type: classic
-          plugin_habits_trim: yes
+          plugin_habits_trim: no
