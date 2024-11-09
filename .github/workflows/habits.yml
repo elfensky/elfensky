@@ -4,7 +4,6 @@ on:
 jobs:
   generate-metrics:
     runs-on: ubuntu-latest
-    if: "github.repository == 'elfensky/elfensky'" #this isn't really neccesary, but needs testing.
     steps:
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/habits
       # - name: 'metrics: habits (facts)'
@@ -44,7 +43,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
-          filename: svg/metrics.plugin.habits.trim.svg
+          filename: /svg/metrics.plugin.habits.trim.svg
           config_timezone: Europe/Brussels
           base: ''
           plugin_habits: yes
