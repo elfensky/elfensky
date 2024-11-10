@@ -1,14 +1,15 @@
 name: Automate Metrics
 on:
-  schedule: # [{ cron: '0 0 * * 1' }] # Schedule daily updates
+  schedule:
+    # - cron: '0 0 * * *' # Every Day at 00:00 AM UTC
     - cron: '0 0 * * 1' # Every Monday at 00:00 AM UTC
-    - cron: '0 15 * * 3' # Every Wednesday at 03:00 PM UTC
+    # - cron: '0 15 * * 3' # Every Wednesday at 03:00 PM UTC
     - cron: '0 6 * * 5' # Every Friday at 06:00 AM UTC
   workflow_dispatch: # allows requesting workflow manually from the website
   # push: { branches: ['main'] } # Run workflow when pushing on master/main
   push:
     paths:
-      - '.github/workflows/metrics.yml' # run workflow if metrics.yml changes
+      - '.github/workflows/scheduled.metrics.yml' # run workflow if metrics.yml changes
 jobs:
   generate-metrics:
     runs-on: ubuntu-latest
