@@ -2,7 +2,7 @@ name: Generate Calendar
 on:
   workflow_dispatch: # allows requesting workflow manually from the website
 jobs:
-  generate-metrics:
+  generate-calendar:
     runs-on: ubuntu-latest
     steps:
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/calendar

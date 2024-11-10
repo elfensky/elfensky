@@ -7,7 +7,7 @@ on:
     - cron: '0 6 * * 5' # Every Friday at 06:00 AM UTC
   workflow_dispatch: # allows requesting workflow manually from the website
 jobs:
-  generate-metrics:
+  generate-pagespeed:
     runs-on: ubuntu-latest
     steps:
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/pagespeed

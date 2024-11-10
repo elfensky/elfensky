@@ -2,7 +2,7 @@ name: Generate Steam
 on:
   workflow_dispatch: # allows requesting workflow manually from the website
 jobs:
-  generate-metrics:
+  generate-steam:
     runs-on: ubuntu-latest
     steps:
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/steam
