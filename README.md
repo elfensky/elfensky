@@ -3,7 +3,3 @@
 ![Metrics](/metrics.plugin.calendar.svg)
 ![Metrics](/metrics.plugin.wakapi.svg)
 ![Metrics](/metrics.plugin.habits.svg)
-
-<br>
-
-![Metrics](/metrics.plugin.pagespeed.svg)
