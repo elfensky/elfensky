@@ -7,7 +7,3 @@
 <br>
 
 ![Metrics](/metrics.plugin.pagespeed.svg)
-
-<br>
-
-![Metrics](/metrics.plugin.achievements.svg)
