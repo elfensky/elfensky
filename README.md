@@ -34,21 +34,3 @@
 ![Most-used languages](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.languages.svg)
 ![Coding activity](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.wakapi.svg)
 ![Coding habits](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.habits.svg)
-
-<details>
-<summary><b>📈 More — achievements, calendar, activity</b></summary>
-
-<br>
-
-![GitHub achievements](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.achievements.svg)
-![GitHub achievements, compact](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.achievements.compact.svg)
-![Contributions calendar](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.calendar.svg)
-![Contributions calendar, this year](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.calendar.current.svg)
-![Contributions calendar, all-time](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.calendar.full.svg)
-![Coding habits charts](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.habits.charts.svg)
-![Coding habits facts](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.habits.facts.svg)
-![lav.ren PageSpeed report](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.pagespeed.svg)
-![Recently played on Steam](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.steam.recent.svg)
-![Steam profile and most-played games](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.steam.full.svg)
-
-</details>
