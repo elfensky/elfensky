@@ -30,25 +30,25 @@
 
 ### 📊 Stats
 
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.base.svg)
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.languages.svg)
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.wakapi.svg)
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.habits.svg)
+![GitHub stats](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.base.svg)
+![Most-used languages](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.languages.svg)
+![Coding activity](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.wakapi.svg)
+![Coding habits](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.habits.svg)
 
 <details>
 <summary><b>📈 More — achievements, calendar, activity</b></summary>
 
 <br>
 
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.achievements.svg)
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.achievements.compact.svg)
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.calendar.svg)
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.calendar.current.svg)
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.calendar.full.svg)
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.habits.charts.svg)
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.habits.facts.svg)
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.pagespeed.svg)
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.steam.recent.svg)
-![Metrics](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.steam.full.svg)
+![GitHub achievements](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.achievements.svg)
+![GitHub achievements, compact](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.achievements.compact.svg)
+![Contributions calendar](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.calendar.svg)
+![Contributions calendar, this year](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.calendar.current.svg)
+![Contributions calendar, all-time](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.calendar.full.svg)
+![Coding habits charts](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.habits.charts.svg)
+![Coding habits facts](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.habits.facts.svg)
+![lav.ren PageSpeed report](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.pagespeed.svg)
+![Recently played on Steam](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.steam.recent.svg)
+![Steam profile and most-played games](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.steam.full.svg)
 
 </details>

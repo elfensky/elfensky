@@ -6,6 +6,7 @@ on:
     - cron: '0 6 * * 5' # Every Friday at 06:00 UTC
   workflow_dispatch: # allows requesting the workflow manually
   push:
+    branches: [main]
     paths:
       - '.github/workflows/metrics.yml' # run when this workflow changes
 
@@ -19,6 +20,7 @@ concurrency:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       # https://github.com/lowlighter/metrics/blob/master/source/plugins/base/README.md
       - name: 'metrics: base'
@@ -179,6 +181,7 @@ jobs:
           token: NOT_NEEDED
           committer_branch: metrics
           base: ''
+          base_skip: yes
           plugin_steam: yes
           plugin_steam_token: ${{ secrets.STEAM_TOKEN }}
           plugin_steam_user: 76561198053036362
@@ -194,6 +197,7 @@ jobs:
           token: NOT_NEEDED
           committer_branch: metrics
           base: ''
+          base_skip: yes
           plugin_steam: yes
           plugin_steam_token: ${{ secrets.STEAM_TOKEN }}
           plugin_steam_user: 76561198053036362
