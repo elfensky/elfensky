@@ -1,0 +1,200 @@
+name: Metrics
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Every Monday at 00:00 UTC
+    - cron: '0 6 * * 5' # Every Friday at 06:00 UTC
+  workflow_dispatch: # allows requesting the workflow manually
+  push:
+    paths:
+      - '.github/workflows/metrics.yml' # run when this workflow changes
+
+permissions:
+  contents: write
+
+concurrency:
+  group: metrics-svg-commit # shared with pagespeed.yml so they never race the metrics branch
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/lowlighter/metrics/blob/master/source/plugins/base/README.md
+      - name: 'metrics: base'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.base.svg
+          committer_branch: metrics
+          config_timezone: Europe/Brussels
+          base: header, activity, community, repositories, metadata
+          base_indepth: yes
+
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/languages
+      - name: 'metrics: languages'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.languages.svg
+          committer_branch: metrics
+          config_timezone: Europe/Brussels
+          base: ''
+          plugin_languages: yes
+          plugin_languages_indepth: yes
+
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/habits
+      - name: 'metrics: habits'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.habits.svg
+          committer_branch: metrics
+          config_timezone: Europe/Brussels
+          base: ''
+          plugin_habits: yes
+          plugin_habits_facts: yes
+          plugin_habits_charts: yes
+          plugin_habits_from: 512
+          plugin_habits_charts_type: classic
+          plugin_habits_trim: no
+
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/habits
+      - name: 'metrics: habits (facts)'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.habits.facts.svg
+          committer_branch: metrics
+          config_timezone: Europe/Brussels
+          base: ''
+          plugin_habits: yes
+          plugin_habits_facts: yes
+          plugin_habits_charts: no
+          plugin_habits_from: 512
+          plugin_habits_charts_type: classic
+          plugin_habits_trim: no
+
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/habits
+      - name: 'metrics: habits (charts)'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.habits.charts.svg
+          committer_branch: metrics
+          config_timezone: Europe/Brussels
+          base: ''
+          plugin_habits: yes
+          plugin_habits_facts: no
+          plugin_habits_charts: yes
+          plugin_habits_from: 512
+          plugin_habits_charts_type: classic
+          plugin_habits_trim: no
+
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/achievements
+      - name: 'metrics: achievements (detailed)'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.achievements.svg
+          committer_branch: metrics
+          base: ''
+          plugin_achievements: yes
+          plugin_achievements_display: detailed
+
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/achievements
+      - name: 'metrics: achievements (compact)'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.achievements.compact.svg
+          committer_branch: metrics
+          base: ''
+          plugin_achievements: yes
+          plugin_achievements_display: compact
+
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/calendar
+      - name: 'metrics: calendar'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.calendar.svg
+          committer_branch: metrics
+          base: ''
+          plugin_calendar: yes
+
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/calendar
+      - name: 'metrics: calendar (current)'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.calendar.current.svg
+          committer_branch: metrics
+          base: ''
+          plugin_calendar: yes
+
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/calendar
+      - name: 'metrics: calendar (full)'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.calendar.full.svg
+          committer_branch: metrics
+          base: ''
+          plugin_calendar: yes
+          plugin_calendar_limit: 0
+
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/wakatime
+      - name: 'metrics: wakapi'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          filename: metrics.plugin.wakapi.svg
+          token: NOT_NEEDED
+          committer_branch: metrics
+          base: ''
+          base_skip: yes
+          plugin_wakatime: yes
+          plugin_wakatime_token: ${{ secrets.WAKAPI_TOKEN }}
+          plugin_wakatime_url: https://wakapi.lav.ren
+          plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
+          plugin_wakatime_days: 365
+
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/steam
+      - name: 'metrics: steam (recently played)'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          filename: metrics.plugin.steam.recent.svg
+          token: NOT_NEEDED
+          committer_branch: metrics
+          base: ''
+          plugin_steam: yes
+          plugin_steam_token: ${{ secrets.STEAM_TOKEN }}
+          plugin_steam_user: 76561198053036362
+          plugin_steam_sections: recently-played
+          plugin_steam_achievements_limit: 0
+
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/steam
+      - name: 'metrics: steam (profile and most-played)'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          filename: metrics.plugin.steam.full.svg
+          token: NOT_NEEDED
+          committer_branch: metrics
+          base: ''
+          plugin_steam: yes
+          plugin_steam_token: ${{ secrets.STEAM_TOKEN }}
+          plugin_steam_user: 76561198053036362
+          plugin_steam_sections: player, most-played, recently-played
