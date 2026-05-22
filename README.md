@@ -35,4 +35,3 @@
 ![GitHub stats](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.base.svg)
 ![Most-used languages](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.languages.svg)
 ![Coding activity](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.wakapi.svg)
-![Coding habits](https://raw.githubusercontent.com/elfensky/elfensky/metrics/metrics.plugin.habits.svg)

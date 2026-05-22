@@ -30,49 +30,50 @@ option avoids it — the deprecated field is hard-coded in the action's source.
   Classic Deprecation (open since 2025-04-03)
 - PR (unmerged): lowlighter/metrics#1769 — migrate achievements to Projects V2 API
 
-**Fix paths (pick one):**
-1. Wait for an upstream fix to merge + release, then un-comment the steps and
-   bump `lowlighter/metrics@` to the new version.
-2. Pin the steps to a fork or commit SHA that includes the Projects-V2 fix from
-   PR #1769 — e.g. `uses: <fork>/metrics@<sha>`.
-3. Drop the achievements plugin permanently.
+## Habits plugin — disabled (broken upstream)
 
-> `metrics`' last release is **v3.34 (Sept 2023)** — no release in 2.5+ years,
-> so fix path 1 may not land soon.
-
-## Habits plugin — mitigated (upstream bug)
-
-**Status:** mitigated 2026-05-22 by adding `plugin_habits_skipped: elfensky/elfensky`
-to the three `habits` steps in `.github/workflows/metrics.yml`.
+**Status:** the three `habits` steps in `.github/workflows/metrics.yml` are
+commented out as of 2026-05-22, and the habits image was removed from `README.md`.
 
 **Symptom:** `metrics.plugin.habits.svg`, `.habits.facts.svg`, and
 `.habits.charts.svg` all rendered `Unexpected error`.
 
-**Root cause:** the habits plugin flat-maps commits out of recent push events and
-runs `.filter(({author}) => …)` with no null-guard:
+**Root cause:** the habits plugin builds a commit list with
+`.flatMap(({payload}) => payload.commits)` and then immediately destructures
+`author` from each entry, with no null-guard:
 
 ```
 TypeError: Cannot destructure property 'author' of 'undefined'
    at .../source/plugins/habits/index.mjs:51
 ```
 
-Squashing/force-pushing this repo's `main` left a push event in the GitHub
-activity feed whose commits no longer resolve, so one entry is `undefined` and
-the destructure throws. All three habits SVGs share the same event fetch, so all
-three fail identically.
+GitHub's Events API returns `null`/`undefined` entries inside a PushEvent's
+`commits` array — for deleted author accounts, force-pushed/orphaned commits, or
+sparse API responses. The `patches` block that hits this runs unconditionally,
+so all three habits SVGs fail identically regardless of the `facts`/`charts`
+flags.
 
-**Mitigation:** repository skipping runs *before* the crashing filter, so
-`plugin_habits_skipped: elfensky/elfensky` removes this repo's events from the
-habits analysis and avoids the bad entry. This is also correct on its own —
-profile-repo README commits aren't meaningful "coding habits". The error would
-self-heal anyway once the force-push event ages out of GitHub's ~90-day events
-window.
+**Not fixable via workflow config.** `plugin_habits_skipped` only filters whole
+events *by repository* (before the flatMap); it cannot remove a `null` nested
+inside a kept event's `commits` array. The fix must be in the action's source.
 
 **Upstream tracking:**
 - PR (open): lowlighter/metrics#1807 — guard against null commit entries in
-  PushEvent payload
+  PushEvent payload (adds `.filter(commit => commit)` before the destructure)
+- PR (open): lowlighter/metrics#1769 — also improves habits error handling
 - PRs (closed, unmerged): #1739, #1764, #1778 — earlier null-guard attempts
 
-**Fix path:** once an upstream null-guard merges + releases, the
-`plugin_habits_skipped` line can stay (still desirable) or be removed if you want
-this repo counted toward habits.
+## Re-enabling either plugin
+
+`metrics`' last release is **v3.34 (Sept 2023)** — no release in 2.5+ years, and
+the fixes above are all still open/unmerged. Options, in rough order of effort:
+
+1. Wait for an upstream fix to merge **and** be released, then un-comment the
+   steps and bump the `lowlighter/metrics@` version.
+2. Pin the affected steps to a reviewed commit SHA of a fork carrying the fixes
+   — e.g. PR #1769 (`dkhokhlov/metrics`) patches *both* plugins. Tradeoff: runs
+   third-party action code with `METRICS_TOKEN` (repo scope).
+3. Fork `lowlighter/metrics` yourself, apply the small patches (a one-line
+   null-guard for habits; the Projects-V2 query for achievements), pin to your
+   own fork's SHA.
+4. Drop the plugins permanently.
