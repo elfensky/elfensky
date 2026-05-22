@@ -18,7 +18,7 @@
 
 ### Highlights
 
-- **[helldivers.bot](https://github.com/elfensky/helldivers.bot)** — Next.js proxy API and frontend for Helldivers
+- **[helldivers.bot](https://github.com/elfensky/helldivers.bot)** — visualizes the Helldivers galactic war: live stats, map view, and an archive of past wars
 - **[alpha5](https://github.com/elfensky/alpha5)** — NORAD satellite catalog ID encoder/decoder · [npm](https://www.npmjs.com/package/alpha5)
 
 ### Currently working on
