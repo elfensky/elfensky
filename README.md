@@ -1,8 +1,8 @@
 <h1 align="left">Hi, I'm Andrei 👋</h1>
 
 <p align="left">
-  <b>Full-stack developer building software for the space industry.</b>
-  I'm the founder of <a href="https://drunik.be">Drunik BV</a>, where I'm building
+  <b>Full-stack developer building software for the space industry.</b><br/>
+  I'm the founder of <a href="https://drunik.be">DRUNIK BV</a>, where I'm building
   <b><a href="https://descent.space">descent.space</a></b> — a SaaS that predicts when
   satellites fall out of orbit.
 </p>
@@ -13,7 +13,7 @@
 </p>
 
 <p align="left">
-  <a href="https://lav.ren">🌐 Portfolio</a> · <a href="https://drunik.be">🏢 Drunik BV</a>
+  <a href="https://lav.ren">🌐 Portfolio</a> · <a href="https://drunik.be">🏢 DRUNIK BV</a>
 </p>
 
 ---
