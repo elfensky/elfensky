@@ -1,0 +1,37 @@
+name: Pagespeed
+
+on:
+  schedule:
+    - cron: '0 0 * * 1' # Every Monday at 00:00 UTC
+    - cron: '0 6 * * 5' # Every Friday at 06:00 UTC
+  workflow_dispatch: # allows requesting the workflow manually
+  push:
+    paths:
+      - '.github/workflows/pagespeed.yml' # run when this workflow changes
+
+permissions:
+  contents: write
+
+concurrency:
+  group: metrics-svg-commit # shared with metrics.yml so they never race the metrics branch
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/pagespeed
+      - name: 'metrics: pagespeed'
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: NOT_NEEDED
+          filename: metrics.plugin.pagespeed.svg
+          committer_branch: metrics
+          base: ''
+          base_skip: yes
+          plugin_pagespeed: yes
+          plugin_pagespeed_token: ${{ secrets.PAGESPEED_TOKEN }}
+          plugin_pagespeed_detailed: yes
+          plugin_pagespeed_screenshot: no
+          plugin_pagespeed_pwa: no
+          plugin_pagespeed_url: https://lav.ren
