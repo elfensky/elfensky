@@ -23,11 +23,12 @@ jobs:
     timeout-minutes: 15
     steps:
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/pagespeed
-      - name: 'metrics: pagespeed'
+      - name: 'metrics: pagespeed (lav.ren)'
+        if: ${{ success() || failure() }}
         uses: lowlighter/metrics@v3.34
         with:
           token: NOT_NEEDED
-          filename: metrics.plugin.pagespeed.svg
+          filename: metrics.plugin.pagespeed.lavren.svg
           committer_branch: metrics
           base: ''
           base_skip: yes
@@ -37,3 +38,20 @@ jobs:
           plugin_pagespeed_screenshot: no
           plugin_pagespeed_pwa: no
           plugin_pagespeed_url: https://lav.ren
+
+      # https://github.com/lowlighter/metrics/tree/master/source/plugins/pagespeed
+      - name: 'metrics: pagespeed (drunik.be)'
+        if: ${{ success() || failure() }}
+        uses: lowlighter/metrics@v3.34
+        with:
+          token: NOT_NEEDED
+          filename: metrics.plugin.pagespeed.drunik.svg
+          committer_branch: metrics
+          base: ''
+          base_skip: yes
+          plugin_pagespeed: yes
+          plugin_pagespeed_token: ${{ secrets.PAGESPEED_TOKEN }}
+          plugin_pagespeed_detailed: yes
+          plugin_pagespeed_screenshot: no
+          plugin_pagespeed_pwa: no
+          plugin_pagespeed_url: https://drunik.be

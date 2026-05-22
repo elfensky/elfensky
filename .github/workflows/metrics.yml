@@ -58,6 +58,7 @@ jobs:
           config_timezone: Europe/Brussels
           base: ''
           plugin_habits: yes
+          plugin_habits_skipped: elfensky/elfensky # skip squashed profile repo (see TODO.md)
           plugin_habits_facts: yes
           plugin_habits_charts: yes
           plugin_habits_from: 512
@@ -75,6 +76,7 @@ jobs:
           config_timezone: Europe/Brussels
           base: ''
           plugin_habits: yes
+          plugin_habits_skipped: elfensky/elfensky # skip squashed profile repo (see TODO.md)
           plugin_habits_facts: yes
           plugin_habits_charts: no
           plugin_habits_from: 512
@@ -92,35 +94,39 @@ jobs:
           config_timezone: Europe/Brussels
           base: ''
           plugin_habits: yes
+          plugin_habits_skipped: elfensky/elfensky # skip squashed profile repo (see TODO.md)
           plugin_habits_facts: no
           plugin_habits_charts: yes
           plugin_habits_from: 512
           plugin_habits_charts_type: classic
           plugin_habits_trim: no
 
-      # https://github.com/lowlighter/metrics/tree/master/source/plugins/achievements
-      - name: 'metrics: achievements (detailed)'
-        if: ${{ success() || failure() }}
-        uses: lowlighter/metrics@v3.34
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          filename: metrics.plugin.achievements.svg
-          committer_branch: metrics
-          base: ''
-          plugin_achievements: yes
-          plugin_achievements_display: detailed
-
-      # https://github.com/lowlighter/metrics/tree/master/source/plugins/achievements
-      - name: 'metrics: achievements (compact)'
-        if: ${{ success() || failure() }}
-        uses: lowlighter/metrics@v3.34
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          filename: metrics.plugin.achievements.compact.svg
-          committer_branch: metrics
-          base: ''
-          plugin_achievements: yes
-          plugin_achievements_display: compact
+      # ── DISABLED 2026-05-22: achievements plugin broken upstream ──────────────
+      # metrics@v3.34's achievements GraphQL query selects a sunset Projects-classic
+      # field, so GitHub's API rejects the whole query. No workflow-config fix exists.
+      # Context, upstream issue/PR links, and re-enable steps: see TODO.md
+      #
+      # - name: 'metrics: achievements (detailed)'
+      #   if: ${{ success() || failure() }}
+      #   uses: lowlighter/metrics@v3.34
+      #   with:
+      #     token: ${{ secrets.METRICS_TOKEN }}
+      #     filename: metrics.plugin.achievements.svg
+      #     committer_branch: metrics
+      #     base: ''
+      #     plugin_achievements: yes
+      #     plugin_achievements_display: detailed
+      #
+      # - name: 'metrics: achievements (compact)'
+      #   if: ${{ success() || failure() }}
+      #   uses: lowlighter/metrics@v3.34
+      #   with:
+      #     token: ${{ secrets.METRICS_TOKEN }}
+      #     filename: metrics.plugin.achievements.compact.svg
+      #     committer_branch: metrics
+      #     base: ''
+      #     plugin_achievements: yes
+      #     plugin_achievements_display: compact
 
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/calendar
       - name: 'metrics: calendar'
@@ -143,18 +149,6 @@ jobs:
           committer_branch: metrics
           base: ''
           plugin_calendar: yes
-
-      # https://github.com/lowlighter/metrics/tree/master/source/plugins/calendar
-      - name: 'metrics: calendar (full)'
-        if: ${{ success() || failure() }}
-        uses: lowlighter/metrics@v3.34
-        with:
-          token: ${{ secrets.METRICS_TOKEN }}
-          filename: metrics.plugin.calendar.full.svg
-          committer_branch: metrics
-          base: ''
-          plugin_calendar: yes
-          plugin_calendar_limit: 0
 
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/wakatime
       - name: 'metrics: wakapi'
