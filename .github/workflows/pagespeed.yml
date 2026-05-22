@@ -6,6 +6,7 @@ on:
     - cron: '0 6 * * 5' # Every Friday at 06:00 UTC
   workflow_dispatch: # allows requesting the workflow manually
   push:
+    branches: [main]
     paths:
       - '.github/workflows/pagespeed.yml' # run when this workflow changes
 
@@ -19,6 +20,7 @@ concurrency:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       # https://github.com/lowlighter/metrics/tree/master/source/plugins/pagespeed
       - name: 'metrics: pagespeed'
