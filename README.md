@@ -26,7 +26,6 @@
 ### Currently working on
 
 - **[descent.space](https://descent.space)** — orbital re-entry prediction SaaS
-- **[pg-bossier](https://github.com/elfensky/pg-bossier)** — a job-management tool built on pg-boss
 
 ---
 
