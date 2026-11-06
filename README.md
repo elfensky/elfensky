@@ -22,6 +22,8 @@
 
 - **[helldivers.bot](https://github.com/elfensky/helldivers.bot)** — visualizes the Helldivers galactic war: live stats, map view, and an archive of past wars
 - **[alpha5](https://github.com/elfensky/alpha5)** — a published [npm](https://www.npmjs.com/package/alpha5) package that encodes and decodes NORAD's Alpha-5 satellite catalog numbers
+- **[macos-apps-mcp](https://github.com/elfensky/macos-apps-mcp)** — one local MCP server that lets AI assistants work with Mail, Calendar, Reminders, Notes, Messages and other native macOS apps, with a preview before every delete or send
+- **[aliexpress-invoice](https://github.com/elfensky/aliexpress-invoice)** — a userscript that adds a "Generate invoice" button to AliExpress orders and prints a proper receipt with the buyer block and the VAT line
 
 ### Currently working on
 
