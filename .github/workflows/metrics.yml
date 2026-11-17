@@ -166,3 +166,5 @@ jobs:
           plugin_wakatime_url: https://wakapi.lav.ren
           plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
           plugin_wakatime_days: 365
+          # fail instead of committing an error card: runner IPs are shared Azure addresses that CrowdSec blocklists may hold
+          plugins_errors_fatal: yes
